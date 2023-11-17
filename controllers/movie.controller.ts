@@ -3,7 +3,10 @@ import axiosInstance from "../config/AxiosInstance";
 import { User } from "../models/User";
 
 /// The TMDB api does not provide option to set the btach size
-export const getMovies = async (req: Request, res: Response) => {
+export const getMovies = async (
+  req: Request<{}, {}, {}, { page: string }>,
+  res: Response
+) => {
   try {
     const { page } = req.query;
 
@@ -20,7 +23,10 @@ export const getMovies = async (req: Request, res: Response) => {
 };
 
 /// The TMDB api does not provide option to set the btach size
-export const getSeries = async (req: Request, res: Response) => {
+export const getSeries = async (
+  req: Request<{}, {}, {}, { page: string }>,
+  res: Response
+) => {
   try {
     const { page } = req.query;
 
@@ -66,7 +72,10 @@ export const getTopSeries = async (req: Request, res: Response) => {
   }
 };
 
-export const addMovieToFav = async (req: Request, res: Response) => {
+export const addMovieToFav = async (
+  req: Request<{ movieId: string }, {}, {}, { type: string }>,
+  res: Response
+) => {
   try {
     const { authUser } = req;
     const { movieId } = req.params;
@@ -114,7 +123,10 @@ export const getMyFavs = async (req: Request, res: Response) => {
   }
 };
 
-export const searchMovies = async (req: Request, res: Response) => {
+export const searchMovies = async (
+  req: Request<{}, {}, {}, { type: string; page: string; searchQuery: string }>,
+  res: Response
+) => {
   try {
     const { searchQuery, page, type } = req.query;
     const response = await axiosInstance.get(
@@ -125,7 +137,10 @@ export const searchMovies = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Somthing went wrong!" });
   }
 };
-export const getMovieDetails = async (req: Request, res: Response) => {
+export const getMovieDetails = async (
+  req: Request<{ movieId: string }, {}, {}, { type: string }>,
+  res: Response
+) => {
   try {
     const { type } = req.query;
     const { movieId } = req.params;

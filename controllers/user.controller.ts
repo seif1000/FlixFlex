@@ -5,7 +5,10 @@ import { RefreshToken } from "../models/RefreshToken";
 import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from "uuid";
 
-export const signup = async (req: Request, res: Response) => {
+export const signup = async (
+  req: Request<{}, {}, { username: string; password: string }, {}>,
+  res: Response
+) => {
   const { username, password } = req.body;
 
   try {
@@ -64,7 +67,10 @@ export const signup = async (req: Request, res: Response) => {
   }
 };
 
-export const login = async (req: Request, res: Response) => {
+export const login = async (
+  req: Request<{}, {}, { username: string; password: string }, {}>,
+  res: Response
+) => {
   try {
     const { username, password } = req.body;
 

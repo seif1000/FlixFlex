@@ -9,6 +9,7 @@ const Userschema = new Schema<IUser>(
     password: {
       type: String,
     },
+    favs: Array,
   },
   {
     timestamps: true,

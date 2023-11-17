@@ -3,6 +3,7 @@ import { userRouter } from "./routes/user.route";
 import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
+import { movieRouter } from "./routes/movie.route";
 let app: Express.Application;
 
 app = Express();
@@ -23,10 +24,7 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).send("server is health");
 });
 
-app.use("/api/v1/user", userRouter);
-app.use("/api/v1/movie", userRouter);
+app.use("/api/v1/auth", userRouter);
+app.use("/api/v1/movie", movieRouter);
 
 export default app;
-
-//eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYWEwNGM2Nzk4NGY1MjNhMzIyZDQ4ZWNkZTVhZmI0NyIsInN1YiI6IjY1NTY2MWNjZDRmZTA0MDEzOTgyNzQ2YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.B8Tgd9tNZToxgwBNj8Hl4hiiE_1rnOP0ePDJ4FdFhRU
-//eaa04c67984f523a322d48ecde5afb47

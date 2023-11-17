@@ -8,21 +8,21 @@ import {
   getSeries,
   getTopMovies,
   getTopSeries,
-  removeMovieFromFav,
   searchMovies,
 } from "../controllers/movie.controller";
+import isAuth from "../middelware/isAuth";
 
 const movieRouter = Router();
 
-movieRouter.get("/get_movies", getMovies);
-movieRouter.get("/get_series", getSeries);
-movieRouter.get("/get_top_moviee", getTopMovies);
-movieRouter.get("/get_top_series", getTopSeries);
-movieRouter.post("/add_movie_to_fav", addMovieToFav);
-movieRouter.put("/remove_movie_from_fav", removeMovieFromFav);
-movieRouter.get("/get_my_favs", getMyFavs);
+movieRouter.get("/get_movies", isAuth, getMovies);
+movieRouter.get("/get_series", isAuth, getSeries);
+movieRouter.get("/get_top_movies", isAuth, getTopMovies);
+movieRouter.get("/get_top_series", isAuth, getTopSeries);
+movieRouter.post("/add_remove_movie_to_fav/:movieId", isAuth, addMovieToFav);
+
+movieRouter.get("/get_my_favs", isAuth, getMyFavs);
 movieRouter.get("/search_movies", searchMovies);
-movieRouter.get("/get_movie_details/:id", getMovieDetails);
+movieRouter.get("/get_movie_details/:movieId", getMovieDetails);
 movieRouter.get("/get_movie_trailer/:id", getMovieTrailer);
 
 export { movieRouter };

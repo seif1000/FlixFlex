@@ -2,6 +2,7 @@ export interface IUser {
   _id: string;
   username: string;
   password: string;
+  favs: Array<{ id: String; type: String }>;
 }
 
 export interface IRefreshToken {

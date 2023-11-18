@@ -151,7 +151,32 @@ export const getMovieDetails = async (
   }
 };
 
-export const getMovieTrailer = async (req: Request, res: Response) => {
+export const getMovieTrailer = async (
+  req: Request<{ movieId: string }, {}, {}, { type: string }>,
+  res: Response
+) => {
   try {
-  } catch (error) {}
+    const { type } = req.query;
+    const { movieId } = req.params;
+
+    const response = await axiosInstance.get(
+      `${type}/${movieId}/videos?language=en-US`
+    );
+    const trialer = response.data.results.find(
+      (item: any) =>
+        item.type === "Trailer" &&
+        item.site === "YouTube" &&
+        item.official === true
+    );
+    if (trialer) {
+      const trailerKey = `https://www.youtube.com/watch?v=${trialer.key}`;
+      res.status(200).json(trailerKey);
+    } else {
+      res.status(200).json("No trailer found");
+    }
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({ message: "Somthing went wrong!" });
+  }
 };

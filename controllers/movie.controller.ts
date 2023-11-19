@@ -116,7 +116,6 @@ export const getMyFavs = async (req: Request, res: Response) => {
         return response.data;
       })
     );
-
     res.status(200).json(favsMovies);
   } catch (error) {
     res.status(500).json({ message: "Somthing went wrong!" });

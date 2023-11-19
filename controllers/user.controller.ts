@@ -13,7 +13,7 @@ export const signup = async (
 
   try {
     let user = await User.findOne({
-      email: username,
+      username: username,
     });
 
     if (user) {
@@ -121,7 +121,7 @@ export const login = async (
     } else {
       return res.status(404).json({
         error: {
-          emailError: "User not found",
+          usernameError: "User not found",
         },
       });
     }

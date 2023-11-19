@@ -21,8 +21,8 @@ movieRouter.get("/get_top_series", isAuth, getTopSeries);
 movieRouter.post("/add_remove_movie_to_fav/:movieId", isAuth, addMovieToFav);
 
 movieRouter.get("/get_my_favs", isAuth, getMyFavs);
-movieRouter.get("/search_movies", searchMovies);
-movieRouter.get("/get_movie_details/:movieId", getMovieDetails);
-movieRouter.get("/get_movie_trailer/:movieId", getMovieTrailer);
+movieRouter.get("/search_movies", isAuth, searchMovies);
+movieRouter.get("/get_movie_details/:movieId", isAuth, getMovieDetails);
+movieRouter.get("/get_movie_trailer/:movieId", isAuth, getMovieTrailer);
 
 export { movieRouter };

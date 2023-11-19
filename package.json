@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./dist/server.js",
     "dev": "tsnd --no-notify --respawn --transpile-only server.ts",
-    "build": "tsc --project .",
+    "build": "npm install && tsc --project .",
     "test": "jest --coverage"
   },
   "engines": {

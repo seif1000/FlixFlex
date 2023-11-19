@@ -21,7 +21,7 @@ mongoose
   });
 
 app.get("/", (req: Request, res: Response) => {
-  res.status(200).send("server is health");
+  res.status(200).send("server is healthy");
 });
 
 app.use("/api/v1/auth", userRouter);

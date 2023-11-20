@@ -32,6 +32,7 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 	$ git clone https://github.com/seif1000/FlixFlex.git
 	
 	```
+.2 Create .env  file 
 
 
 
